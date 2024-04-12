@@ -1,0 +1,19 @@
+<h2 mat-dialog-title class="centered-title">{{ data.esEdicion ? 'Edit person' : 'Add new person' }}</h2>
+<mat-dialog-content>
+  <form #personaForm="ngForm">
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="data.persona.nombre" name="name" #nombreInput required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Last name" [(ngModel)]="data.persona.apellido" name="lastname" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="DNI" [(ngModel)]="data.persona.dni" name="dni" required>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="dialog-actions">
+  <button mat-button [mat-dialog-close]="data.persona" [disabled]="!personaForm.valid" mat-raised-button color="primary" class="custom-button">
+    {{ data.esEdicion ? 'Save changes' : 'Add' }}
+  </button>
+</mat-dialog-actions>

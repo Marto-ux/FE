@@ -1,0 +1,42 @@
+<mat-toolbar color="primary" class="mat-elevation-z4">
+  Birthday management system
+</mat-toolbar>
+
+<div class="container mat-elevation-z4">
+  <div class="list-section">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Possible guests</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-list>
+        <mat-list-item *ngFor="let persona of personas">
+          <mat-checkbox (change)="persona.confirmado = $event.checked" class="example-margin">
+            {{ persona.nombre }} {{ persona.apellido }}
+          </mat-checkbox>
+          <button mat-icon-button (click)="abrirDialogoEditar(persona)" matTooltip="Editar">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="eliminarPersona(persona.id)" matTooltip="Eliminar">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="abrirDialogoAgregar()">Add person</button>
+        <button mat-button color="warn" (click)="onInviteConfirmed()" style="margin-left: auto;">Invite Confirmed</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="list-section">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Confirmed guests</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-list>
+        <mat-list-item *ngFor="let persona of personasConfirmadas">{{ persona.nombre }} {{ persona.apellido }}</mat-list-item>
+      </mat-list>
+    </mat-card>
+  </div>
+</div>

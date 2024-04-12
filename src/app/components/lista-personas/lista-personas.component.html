@@ -1,0 +1,5 @@
+<div *ngFor="let persona of personas">
+  {{ persona.nombre }} - {{ persona.apellido }}
+  <button (click)="abrirDialogoEditar(persona)">Edit</button>
+  <button (click)="eliminarPersona(persona.id)">Delete</button>
+</div>
